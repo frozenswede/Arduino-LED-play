@@ -1,0 +1,37 @@
+#include <Adafruit_NeoPixel.h>
+
+//Enter number of LED's
+// Maximum is 613!
+// At about 30 pixels incremental switching starts to show. So good for max 20 pixels, unless a sliding effect is wanted.
+
+  # define PIN 13
+int NOLED=10; 
+int colormax=255; //maximum brightness is 255.
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NOLED, PIN);
+
+void setup() {
+  // put your setup code here, to run once:
+}
+
+void loop() {
+  uint32_t magenta = strip.Color(255, 0, 255);
+  uint32_t violet = strip.Color(148, 0, 211);
+  uint32_t indigo = strip.Color(75, 0, 130);
+  uint32_t blue = strip.Color(0, 0, 255);
+  uint32_t green = strip.Color(0, 255, 0);
+  uint32_t yellow = strip.Color(255, 255, 0);
+  uint32_t orange = strip.Color(255, 127, 0);
+  uint32_t red = strip.Color(255, 0, 0);
+  strip.begin();
+for (int i = 0; i<= NOLED; i=i+7){
+  strip.setPixelColor(0+i, red);
+  strip.setPixelColor(1+i, orange);
+  strip.setPixelColor(2+i, yellow);
+  strip.setPixelColor(3+i, green);
+  strip.setPixelColor(4+i, blue);
+  strip.setPixelColor(5+i, indigo);
+  strip.setPixelColor(6+i, magenta);
+  strip.setBrightness(32);
+}
+  strip.show();  // Push off-state to strip.
+}
